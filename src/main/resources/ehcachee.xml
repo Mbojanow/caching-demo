@@ -1,0 +1,36 @@
+<config xmlns:jsr107='http://www.ehcache.org/v3/jsr107' xmlns='http://www.ehcache.org/v3'>
+    <service>
+        <jsr107:defaults enable-management="true" enable-statistics="true"/>
+    </service>
+
+    <cache alias="default" uses-template="default"/>
+    <cache alias="products" uses-template="fiveMinuteBucket"/>
+    <cache alias="pets" uses-template="pets"/>
+
+    <cache-template name="default">
+        <expiry>
+            <ttl unit="minutes">1</ttl>
+        </expiry>
+        <resources>
+            <heap unit="MB">20</heap>
+        </resources>
+    </cache-template>
+
+    <cache-template name="fiveMinuteBucket">
+        <expiry>
+            <ttl unit="minutes">5</ttl>
+        </expiry>
+        <resources>
+            <heap unit="MB">20</heap>
+        </resources>
+    </cache-template>
+
+    <cache-template name="pets">
+        <expiry>
+            <ttl unit="minutes">5</ttl>
+        </expiry>
+        <resources>
+            <heap unit="MB">20</heap>
+        </resources>
+    </cache-template>
+</config>
